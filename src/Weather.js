@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import WeatherInfo from "./WeatherInfo";
-import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import "./Weather.css";
 
@@ -67,13 +65,19 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <WeatherInfo data={weatherData} />
-        <WeatherForecast coordinates={weatherData.coordinates} city={weatherData.city}/>
-        <footer>
+     
+        
+
+
+
+         <footer>
             This project was coded by Phefumlela
-            <a href="https://www.shecodes.io/" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/PhefuM/my-app" target="_blank" rel="noopener noreferrer">
             open sourced on GitHub</a> 
-            and<a></a>
+            and
+            <a href="#" target="_blank" rel="noopener noreferrer">
+                hosted on Netlify
+          </a>
         </footer>
         </div>
     );
