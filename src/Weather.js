@@ -65,21 +65,25 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-     
-        
 
-
-
-         <footer>
-            This project was coded by Phefumlela
-            <a href="https://github.com/PhefuM/my-app" target="_blank" rel="noopener noreferrer">
-            open sourced on GitHub</a> 
-            and
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                hosted on Netlify
+        <footer>
+          This project was coded by Phefumlela
+          <a
+            href="https://github.com/PhefuM/my-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            open sourced on GitHub
+          </a>
+          and
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            hosted on Netlify
           </a>
         </footer>
-        </div>
+      </div>
     );
-}
+  } else {
+    search();
+    return "Loading...";
+  }
 }
