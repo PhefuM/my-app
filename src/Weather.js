@@ -3,87 +3,61 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState("");
+  const [loaded, setLoaded] = useState(false);
+  const [weather, setWeather] = useState({});
 
   function handleResponse(response) {
-    setWeatherData({
-      ready: true,
-      coordinates: response.data.coordinates,
+    setLoaded(true);
+    setWeather({
       temperature: response.data.temperature.current,
       humidity: response.data.temperature.humidity,
-      date: new Date(response.data.time * 1000),
       description: response.data.condition.description,
       icon: response.data.condition.icon,
       wind: response.data.wind.speed,
-      city: response.data.city,
     });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    search();
+    let apiKey = "eac360db5fc86ft86450f3693e73o43f";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   function handleCityChange(event) {
     setCity(event.target.value);
   }
 
-  function search() {
-    const apiKey = "eac360db5fc86ft86450f3693e73o43f";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let form = (
+    <form onSubmit={handleSubmit} className="Search">
+      <input
+        type="search"
+        placeholder="Enter a city.."
+        className="form-control search-input"
+        onChange={handleCityChange}
+        value={city}
+      />
+      <button type="submit" className="search-button">Search</button>
+    </form>
+  );
 
-    axios.get(apiUrl).then(handleResponse);
-  }
-
-  if (weatherData.ready) {
+  if (loaded) {
     return (
-      <div className="Weather">
-        <a
-          href="https://www.shecodes.io/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/images/logo.png" className="logo" alt="SheCodes Logo" />
-        </a>
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-9 ">
-              <input
-                type="search"
-                placeholder="Enter a city.."
-                className="form-control search-input"
-                onChange={handleCityChange}
-              />
-            </div>
-            <div className="col-3 p-0">
-              <input
-                type="submit"
-                value="Search"
-                className="btn btn-primary w-100"
-              />
-            </div>
-          </div>
-        </form>
-
-        <footer>
-          This project was coded by Phefumlela
-          <a
-            href="https://github.com/PhefuM/my-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            open sourced on GitHub
-          </a>
-          and
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            hosted on Netlify
-          </a>
-        </footer>
+      <div>
+        {form}
+        <div class="weather-app-temperature">
+          <p>Temperature: {Math.round(weather.temperature)}°C</p>
+          <p>Description: {weather.description}</p>
+          <p>Humidity: {weather.humidity} %</p>
+          <p>Wind: {weather.wind} km/h</p>
+          <p>
+            <img src={weather.icon} alt={weather.description} />
+          </p>
+        </div>
       </div>
     );
   } else {
-    search();
-    return "Loading...";
+    return <div>{form}</div>;
   }
 }
