@@ -13,9 +13,13 @@ function App() {
         </header>
         <Weather />
         <div className="Footer">
-          This project was coded by
-          <a href="https://github.com/PhefuM/my-app"> Phefumlela Madyo
-
+          This project was coded by Phefumlela Madyo and is {""}
+          <a href="https://github.com/PhefuM/my-app">
+          open-sourced on GitHub
+          </a>
+          {""} and {""}
+          <a href="https://sweet-cocada-e93e0e.netlify.app/">
+          hosted on Netlify 
           </a>
       </div>
     </div>
