@@ -46,15 +46,24 @@ export default function Weather(props) {
     return (
       <div>
         {form}
-        <div class="weather-app-temperature">
-          <p>Temperature: {Math.round(weather.temperature)}°C</p>
+        <div>
+          <div>
+          Temperature
+          <br />
+          <div class="weather-app-temperature">
+            {Math.round(weather.temperature)}°C
+            </div>
+          <div className="units">
           <p>Description: {weather.description}</p>
           <p>Humidity: {weather.humidity} %</p>
           <p>Wind: {weather.wind} km/h</p>
           <p>
             <img src={weather.icon} alt={weather.description} />
           </p>
+          </div>
+
         </div>
+      </div>
       </div>
     );
   } else {

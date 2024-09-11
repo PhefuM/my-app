@@ -27,11 +27,9 @@
   background: #885df1;
   font-weight: bold;
   font-size: 16px;
- 
   padding: 15px 20px;
   border: none;
   border-radius: 5px;
-  display: inline;
   cursor: pointer; /* Make button cursor a pointer */
 }
 
@@ -51,12 +49,17 @@ h1 {
 
 .weather-app-temperature {
   font-weight: bold;
-  color: rgb(33, 33, 33);
   margin-left: 5px;
-  font-weight: 150px;
+  font-weight: 120px;
   margin-left: 10px;
   font-size: 80px;
   line-height: 120px;
+}
+
+.units {
+  font-weight: light;
+  font-size: 20px;
+  color: rgba(39, 33, 66, 0.4);
 }
 
 .Weather footer {
