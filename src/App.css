@@ -13,3 +13,18 @@
   color: white;
 }
 
+.Weather-app {
+background: white;
+max-width: 500px;
+margin: 50px auto;
+padding: 30px;
+box-shadow: 0 30px 40px rgba(65, 50, 80, 0.05);
+border-radius: 8px;
+}
+
+.Footer {
+  font-size: 14px;
+  padding: 30px 0 0 0;
+  text-align: center;
+  color:  rgb(108, 126, 199); ;
+}
